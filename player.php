@@ -3,6 +3,8 @@
 		<div class="ym-wbox">
 			<section class="ym-grid linearize-level-1">
 				<article class="ym-g66 ym-gl content">
+					<h2><?php echo $getPlayer; ?></h2>
+					
 					<?php 
 						if($getPlayer == ''){
 							echo '<div class="ym-gbox-left ym-clearfix"><p>'.$lng['player']['info'].'</p></div>';

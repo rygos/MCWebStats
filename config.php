@@ -5,6 +5,8 @@ $pg_headline = 'Minecraft Statstiken für Banncity.de';
 $pg_version = '0.0.1';
 $pg_copyright = 'Marcel \'ryg\' Hering';
 
+$mc_world = '';
+
 $db_server = 'localhost';
 $db_port = '3306';
 $db_user = '';

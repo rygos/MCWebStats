@@ -9,7 +9,7 @@ $sql = "SELECT
 		FROM
 			stats_move
 		INNER JOIN stats_players ON stats_move.player_id = stats_players.player_id
-		WHERE stats_players.`player_id` = '".$playerid."' AND type=0";
+		WHERE stats_players.`player_id` = '".$playerid."' AND type=0 AND world='".$mc_world."'";
 		
 $result = mysql_query($sql);
 while($row = mysql_fetch_array($result)){
