@@ -1,6 +1,17 @@
 <?php
 $lng = array();
 
+//Allgemeine Strings
+$lng['misc']['title'] = 'Titel';
+$lng['misc']['value'] = 'Wert';
+$lng['misc']['meter'] = 'Meter';
+$lng['misc']['unit'] = 'Einheit';
+$lng['misc']['kills'] = 'Kills';
+$lng['misc']['arrows'] = 'Pfeile';
+$lng['misc']['food'] = 'Essen';
+$lng['misc']['buckets'] = 'Eimer';
+$lng['misc']['minutes'] = 'Minuten';
+
 //Topmenu
 $lng['topmenu']['overview'] 	= '&Uuml;bersicht';
 $lng['topmenu']['player']		= 'Spieler';
@@ -18,6 +29,46 @@ $lng['home']['t5eat'] = 'Top 5 - Gegessen';
 $lng['player']['info'] = 'Um die Informationen eines Spielers sehen zu k&ouml;nnen, klicke einfach auf der rechten Seite einen Spielernamen an.';
 $lng['player']['righttitle'] = 'Spieler';
 $lng['player']['rightinfo'] = 'F&uuml;r weitere Informationen entsprechenden Spieler anklicken.';
+
+
+//Playerinfo Page
+$lng['join']['title'] = 'Spielerzeiten';
+$lng['join']['first'] = 'Erster Login';
+$lng['join']['last'] = 'Letzter Login';
+$lng['join']['leave'] = 'Letzter Logout';
+$lng['join']['lastplaytime'] = 'Letzte Spieldauer';
+$lng['join']['playtime'] = 'Gesamtspielzeit';
+
+$lng['move']['title'] = 'Fortbewegung';
+$lng['move']['foot'] = 'Laufen';
+$lng['move']['boat'] = 'Boot';
+$lng['move']['cart'] = 'Lore';
+$lng['move']['pig'] = 'Schwein';
+
+$lng['general']['title'] = 'Allgemeine Statistiken';
+$lng['general']['arrows'] = 'Pfeile verschossen';
+$lng['general']['xpgained'] = 'Erfahrung gesammelt';
+$lng['general']['joins'] = 'Spielbeitritte';
+$lng['general']['fishcatched'] = 'Fische gefangen';
+$lng['general']['damagetaken'] = 'Schaden genommen';
+$lng['general']['timeskicked'] = 'Gekickt';
+$lng['general']['toolsbroken'] = 'Werkzeuge verbraucht';
+$lng['general']['eggsthrown'] = 'Eier geworfen';
+$lng['general']['itemscrafted'] = 'Items erstellt';
+$lng['general']['omnomnom'] = 'Gegessen';
+$lng['general']['onfire'] = 'In Flammen gestanden';
+$lng['general']['wordssaid'] = 'Wörter gesagt';
+$lng['general']['commandsdone'] = 'Commandos eingegeben';
+$lng['general']['votes'] = 'Abstimmungen';
+$lng['general']['teleports'] = 'Teleportierungen';
+$lng['general']['itempickups'] = 'Items aufgenommen';
+$lng['general']['bedenter'] = 'Zu Bett gegangen';
+$lng['general']['bucketfill'] = 'Eimer gefüllt';
+$lng['general']['bucketempty'] = 'Eimer geleert';
+$lng['general']['worldchange'] = 'Welten gewechselt';
+$lng['general']['itemdrops'] = 'Items verworfen';
+$lng['general']['shear'] = 'Schere genutzt';
+
 
 //Blocks
 $lng['block'][1] = 'Stein';
@@ -44,6 +95,7 @@ $lng['block'][24] = 'Sandstein';
 $lng['block'][26] = 'Bett';
 $lng['block'][31] = 'Gras';
 $lng['block'][35] = 'Wolle';
+$lng['block'][37] = 'Löwenzahn';
 $lng['block'][38] = 'Rose';
 $lng['block'][49] = 'Obsidian';
 $lng['block'][50] = 'Fackel';
@@ -51,12 +103,15 @@ $lng['block'][53] = 'Einchenholztreppe';
 $lng['block'][54] = 'Truhe';
 $lng['block'][56] = 'Diamanterz';
 $lng['block'][58] = 'Werkbank';
+$lng['block'][59] = 'Weizen';
 $lng['block'][60] = 'Ackerboden';
 $lng['block'][61] = 'Ofen';
 $lng['block'][65] = 'Leiter';
 $lng['block'][63] = 'Schild';
 $lng['block'][64] = 'Holztür';
+$lng['block'][67] = 'Steintreppe';
 $lng['block'][68] = 'Wandschild';
+$lng['block'][71] = 'Eisentür';
 $lng['block'][72] = 'Hölzerne Druckplatte';
 $lng['block'][73] = 'Redstone- Erz';
 $lng['block'][74] = 'Leuchtendes Redstone-Erz';
@@ -71,10 +126,17 @@ $lng['block'][102] = 'Glasscheibe';
 $lng['block'][103] = 'Melone';
 $lng['block'][105] = 'Melonenpflanze';
 $lng['block'][109] = 'Steinziegeltreppe';
+$lng['block'][111] = 'Netherziegel';
+$lng['block'][112] = 'Netherziegelzaun';
+$lng['block'][113] = 'Netherziegeltreppe';
 $lng['block'][115] = 'Netherwarze';
 $lng['block'][118] = 'Kessel';
+$lng['block'][126] = 'Holzstufe';
+$lng['block'][130] = 'Endertruhe';
+$lng['block'][139] = 'Mauer';
 $lng['block'][141] = 'Karottenpflanze';
 $lng['block'][142] = 'Kartoffelpflanze';
+$lng['block'][143] = 'Holzknopf';
 $lng['block'][161] = 'Laub';
 $lng['block'][162] = 'Holz';
 $lng['block'][171] = 'Teppich';

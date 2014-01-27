@@ -11,6 +11,12 @@
 		$getPlayer = '';
 	}
 
+	if(isset($_GET['world'])) {
+		$getWorld = $_GET['world'];
+	}else{
+		$getWorld = '';
+	}
+
 	include 'config.php';
 	
 	//hier kommt irgendwann die mehrsprachigkeit... xD
@@ -18,6 +24,8 @@
 	
 	include 'functions.php';
 	include 'db.php';
+	
+	include 'get_playerinfo.php';
 	
 	include 'header.php';
 	

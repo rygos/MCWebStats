@@ -9,6 +9,9 @@
 						if($getPlayer == ''){
 							echo '<div class="ym-gbox-left ym-clearfix"><p>'.$lng['player']['info'].'</p></div>';
 						}else{
+							if($getWorld == ''){
+								$getWorld = $mc_world;
+							}
 							include 'playerinfo.php';
 						}
 					?>

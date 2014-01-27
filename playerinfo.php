@@ -1,165 +1,196 @@
 <?php
-$sql = "SELECT player_id FROM stats_players WHERE name = '".$getPlayer."'";
-$result = mysql_query($sql);
-$playerid = 0;
-while($row = mysql_fetch_array($result)){$playerid = $row['player_id'];}
+	include('get_playerinfo.php');
+	$t = getPlayerInfo($getWorld, $getPlayer);
 
-$sql = "SELECT
-			stats_players.*, stats_move.*
-		FROM
-			stats_move
-		INNER JOIN stats_players ON stats_move.player_id = stats_players.player_id
-		WHERE stats_players.`player_id` = '".$playerid."' AND type=0 AND world='".$mc_world."'";
-		
-$result = mysql_query($sql);
-while($row = mysql_fetch_array($result)){
-	echo '<div class="ym-gbox-left ym-clearfix">
-				<div class="ym-grid linearize-level-2">
-					<div class="ym-g50 ym-gl">
-						<div class="ym-gbox-left">
-							<!-- content -->
-							<h6>Reisen</h6>
-							<table>
-								<thead>
-									<th>Art</th>
-									<th>Entfernung</th>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Laufen</td>
-										<td>'.intval($row['distance']).' Meter</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>';	
-}
-
-	$sql = "SELECT 
-				stats_player.*, stats_players.* 
-			FROM 
-				stats_player 
-			INNER JOIN stats_players ON stats_player.player_id = stats_players.player_id 
-			WHERE stats_players.`name` = '".$getPlayer."'";
-	$result = mysql_query($sql); // or die("header.php Anfrage...");
-	
-	while($row = mysql_fetch_array($result)){
-
-echo '<div class="ym-g50 ym-gr">
-			<div class="ym-gbox-right">
-				<!-- content -->
-				<h6>Sonstiges</h6>
+echo '
+<div class="ym-gbox-left ym-clearfix">
+	<div class="ym-grid linearize-level-2">
+		<div class="ym-g50 ym-gl">
+			<div class="ym-gbox-left">
+				<h6>'.$lng['join']['title'].'</h6>
 				<table>
 					<thead>
-						<th>Titel</th>
-						<th>Wert</th>
+						<th>'.$lng['misc']['title'].'</th>
+						<th>'.$lng['misc']['value'].'</th>
 					</thead>
 					<tbody>
 						<tr>
-							<td>Spielzeit</td>
-							<td>'.intervall($row['playtime']).'</td>
+							<td>'.$lng['join']['first'].'</td>
+							<td>'.$t['firstjoin'].'</td>
 						</tr>
 						<tr>
-							<td>Pfeile Verschossen</td>
-							<td>'.$row['arrows'].'</td>
+							<td>'.$lng['join']['last'].'</td>
+							<td>'.$t['info']['lastjoin'].'</td>
 						</tr>
 						<tr>
-							<td>Exp gesammelt</td>
-							<td>'.$row['xpgained'].'</td>
+							<td>'.$lng['join']['leave'].'</td>
+							<td>'.$t['info']['lastleave'].'</td>
 						</tr>
 						<tr>
-							<td>Spielbeitritte</td>
-							<td>'.$row['joins'].'</td>
+							<td>'.$lng['join']['lastplaytime'].'</td>
+							<td>'.intervall(strtotime($t['info']['lastleave']) - strtotime($t['info']['lastjoin'])).'</td>
 						</tr>
 						<tr>
-							<td>Fische gefangen</td>
-							<td>'.$row['fishcatched'].'</td>
+							<td>'.$lng['join']['playtime'].'</td>
+							<td>'.intervall($t['info']['playtime']).'</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>	
+		<div class="ym-g50 ym-gr">
+			<div class="ym-gbox-right">
+				<h6>'.$lng['move']['title'].'</h6>
+				<table>
+					<thead>
+						<th>'.$lng['misc']['title'].'</th>
+						<th>'.$lng['misc']['value'].'</th>
+						<th>'.$lng['misc']['unit'].'</th>
+					</thead>
+					<tbody>
+						<tr>
+							<td>'.$lng['move']['foot'].'</td>
+							<td>'.intval($t['move']['foot']).'</td>
+							<td>'.$lng['misc']['meter'].'</td>
 						</tr>
 						<tr>
-							<td>Schaden genommen</td>
-							<td>'.$row['damagetaken'].'</td>
+							<td>'.$lng['move']['boat'].'</td>
+							<td>'.intval($t['move']['boat']).'</td>
+							<td>'.$lng['misc']['meter'].'</td>
 						</tr>
 						<tr>
-							<td>Gekickt</td>
-							<td>'.$row['timeskicked'].'</td>
+							<td>'.$lng['move']['cart'].'</td>
+							<td>'.intval($t['move']['cart']).'</td>
+							<td>'.$lng['misc']['meter'].'</td>
 						</tr>
 						<tr>
-							<td>Werkzeuge verbraucht</td>
-							<td>'.$row['toolsbroken'].'</td>
-						</tr>
-						<tr>
-							<td>Eier geworfen</td>
-							<td>'.$row['eggsthrown'].'</td>
-						</tr>
-						<tr>
-							<td>Items erstellt</td>
-							<td>'.$row['itemscrafted'].'</td>
-						</tr>
-						<tr>
-							<td>Gegessen</td>
-							<td>'.$row['omnomnom'].'</td>
-						</tr>
-						<tr>
-							<td>Feuer gefangen</td>
-							<td>'.$row['onfire'].'</td>
-						</tr>
-						<tr>
-							<td>Chat befehle</td>
-							<td>'.$row['commandsdone'].'</td>
-						</tr>
-						<tr>
-							<td>Letzter Logout</td>
-							<td>'.$row['lastleave'].'</td>
-						</tr>
-						<tr>
-							<td>Letzter Login</td>
-							<td>'.$row['lastjoin'].'</td>
-						</tr>
-						<tr>
-							<td>Abstimmungen</td>
-							<td>'.$row['votes'].'</td>
-						</tr>
-						<tr>
-							<td>Netherteleports</td>
-							<td>'.$row['teleports'].'</td>
-						</tr>
-						<tr>
-							<td>Items aufgenommen</td>
-							<td>'.$row['itempickups'].'</td>
-						</tr>
-						<tr>
-							<td>Ins Bett gegangen</td>
-							<td>'.$row['bedenter'].'</td>
-						</tr>
-						<tr>
-							<td>Einer gefüllt</td>
-							<td>'.$row['bucketfill'].'</td>
-						</tr>
-						<tr>
-							<td>Eimer geleert</td>
-							<td>'.$row['bucketempty'].'</td>
-						</tr>
-						<tr>
-							<td>Items verggeworfen</td>
-							<td>'.$row['itemdrops'].'</td>
-						</tr>
-						<tr>
-							<td>Schere genutzt</td>
-							<td>'.$row['shear'].'</td>
-						</tr>
-						<tr>
-							<td>Erster Login</td>
-							<td>'.$row['firstjoin'].'</td>
+							<td>'.$lng['move']['pig'].'</td>
+							<td>'.intval($t['move']['pig']).'</td>
+							<td>'.$lng['misc']['meter'].'</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
-	</div>';
-	}
-	?>
+	</div>
+	<div class="ym-grid linearize-level-2">
+		<div class="ym-g50 ym-gl">
+			<div class="ym-gbox-left">
+				<h6>'.$lng['general']['title'].'</h6>
+				<table>
+					<thead>
+						<th>'.$lng['misc']['title'].'</th>
+						<th>'.$lng['misc']['value'].'</th>
+					</thead>
+					<tbody>
+						<tr>
+							<td>'.$lng['general']['joins'].'</td>
+							<td>'.$t['info']['joins'].'</td>
+						</tr>
+						<tr>
+							<td>'.$lng['general']['wordssaid'].'</td>
+							<td>'.$t['info']['wordssaid'].'</td>
+						</tr>
+						<tr>
+							<td>'.$lng['general']['commandsdone'].'</td>
+							<td>'.$t['info']['commandsdone'].'</td>
+						</tr>
+						<tr>
+							<td>'.$lng['general']['teleports'].'</td>
+							<td>'.$t['info']['teleports'].'</td>
+						</tr>
+						<tr>
+							<td>'.$lng['general']['worldchange'].'</td>
+							<td>'.$t['info']['worldchange'].'</td>
+						</tr>
+						<tr>
+							<td>'.$lng['general']['votes'].'</td>
+							<td>'.$t['info']['votes'].'</td>
+						</tr>
+						<tr>
+							<td>'.$lng['general']['timeskicked'].'</td>
+							<td>'.$t['info']['timeskicked'].'</td>
+						</tr>
+						<tr>
+							<td>'.$lng['general']['damagetaken'].'</td>
+							<td>'.$t['info']['damagetaken'].'</td>
+						</tr>
+						<tr>
+							<td>'.$lng['general']['toolsbroken'].'</td>
+							<td>'.$t['info']['toolsbroken'].'</td>
+						</tr>
+						<tr>
+							<td>'.$lng['general']['itemscrafted'].'</td>
+							<td>'.$t['info']['itemscrafted'].'</td>
+						</tr>
+						<tr>
+							<td>'.$lng['general']['omnomnom'].'</td>
+							<td>'.$t['info']['omnomnom'].'</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>	
+		<div class="ym-g50 ym-gr">
+			<div class="ym-gbox-right">
+				<h6>'.$lng['general']['title'].'</h6>
+				<table>
+					<thead>
+						<th>'.$lng['misc']['title'].'</th>
+						<th>'.$lng['misc']['value'].'</th>
+					</thead>
+					<tbody>
+						<tr>
+							<td>'.$lng['general']['xpgained'].'</td>
+							<td>'.$t['info']['xpgained'].'</td>
+						</tr>
+						<tr>
+							<td>'.$lng['general']['arrows'].'</td>
+							<td>'.$t['info']['arrows'].'</td>
+						</tr>
+						<tr>
+							<td>'.$lng['general']['fishcatched'].'</td>
+							<td>'.$t['info']['fishcatched'].'</td>
+						</tr>
+						<tr>
+							<td>'.$lng['general']['eggsthrown'].'</td>
+							<td>'.$t['info']['eggsthrown'].'</td>
+						</tr>
+						<tr>
+							<td>'.$lng['general']['bucketfill'].'</td>
+							<td>'.$t['info']['bucketfill'].'</td>
+						</tr>
+						<tr>
+							<td>'.$lng['general']['bucketempty'].'</td>
+							<td>'.$t['info']['bucketempty'].'</td>
+						</tr>
+						<tr>
+							<td>'.$lng['general']['itempickups'].'</td>
+							<td>'.$t['info']['itempickups'].'</td>
+						</tr>
+						<tr>
+							<td>'.$lng['general']['itemdrops'].'</td>
+							<td>'.$t['info']['itemdrops'].'</td>
+						</tr>
+						<tr>
+							<td>'.$lng['general']['onfire'].'</td>
+							<td>'.$t['info']['onfire'].'</td>
+						</tr>
+						<tr>
+							<td>'.$lng['general']['bedenter'].'</td>
+							<td>'.$t['info']['bedenter'].'</td>
+						</tr>
+						<tr>
+							<td>'.$lng['general']['shear'].'</td>
+							<td>'.$t['info']['shear'].'</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 	<h6>Blockstatistiken</h6>
-	<p class='box info'>Diese Tabelle befindet sich noch im Beta stadium<p>
+	<p class="box info">Beta, Beta =)<p>
 	<table>
 		<thead>
 			<th>Icon</th>
@@ -167,60 +198,37 @@ echo '<div class="ym-g50 ym-gr">
 			<th>Gesetzt</th>
 			<th>Abgebaut</th>
 		</thead>
-		<tbody>
+		<tbody>';
 			
-			
-			<?php
-			$sql = "SELECT
-						*
-					FROM
-						stats_block
-					WHERE `player_id` = '".$playerid."'
-					ORDER BY blockID ASC";
-			$i = 0;
-			$break0count = 0;
-			$break1count = 0;
-			$bid = 0;
-			$result = array();
-			
-			$result = mysql_query($sql);
-			while($row = mysql_fetch_array($result)){
-				//Prüfen ob der gleiche Block wieder vorkommt
-				if($bid == $row['blockID']){
-					//Der gleiche Block 
-					$break1count = $row['amount'];
-				}else{
-					//Neuer Block
-					$break0count = 0;
-					$break1count = 0;
+				for ($i = 1; $i <= 256; $i++) {
+					$break = false;
+					$set = false;
+					$breakcount=0;
+					$setcount=0;
+					if(isset($i, $t['block']['break'][$i]) == true){
+						$break=true;
+						$breakcount = $t['block']['break'][$i];
+					}
+					if(isset($i, $t['block']['set'][$i]) == true){
+						$set=true;
+						$setcount = $t['block']['set'][$i];
+					}
+						
+					if($break == true or $set == true){
+						echo '<tr>
+								<td><img src="assets/blocks/'.$i.'.png" width="32"></td>
+								<td>'.$lng['block'][$i].'</td>
+								<td>'.$setcount.'</td>
+								<td>'.$breakcount.'</td>
+							</tr>';
+					}else{
+						
+					}
 					
-					$bid = $row['blockID'];
-					$break0count = $row['amount'];
-					$i = $i + 1;
 				}
-				
-				$result_bid[$i] = $bid;
-				$result_break0[$i] = $break0count;
-				$result_break1[$i] = $break1count;
-				
-			}
 
-		$i = 1;
-				
-			foreach($result_bid as &$value){
-				echo'
-					<tr>
-						<td><img src="assets/blocks/'.$value.'.png" width="32"></td>
-						<td>'.$lng['block'][$value].'</td>
-						<td>'.$result_break1[$i].'</td>
-						<td>'.$result_break0[$i].'</td>
-					</tr>';
-					
-				$i = $i + 1;
-			}
-
-			?>
-			
+			echo '
 		</tbody>
 	</table>
 </div>
+';
