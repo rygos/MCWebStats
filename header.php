@@ -4,19 +4,19 @@
 		if($active == 'home' || $active == ''){
 			$t = '<li class="active"><strong>'.$language['topmenu']['overview'].'</strong></li>';
 		}else{
-			$t = '<li><a href="index.php">&Uuml;bersicht</a></li>';
+			$t = '<li><a href="index.php">'.$language['topmenu']['overview'].'</a></li>';
 		}
 		
 		if($active == 'player'){
 			$t .= '<li class="active"><strong>'.$language['topmenu']['player'].'</strong></li>';
 		}else{
-			$t .= '<li><a href="index.php?page=player">Spieler</a></li>';
+			$t .= '<li><a href="index.php?page=player">'.$language['topmenu']['player'].'</a></li>';
 		}
 		
 		if($active == 'server'){
 			$t .= '<li class="active"><strong>'.$language['topmenu']['server'].'</strong></li>';
 		}else{
-			$t .= '<li><a href="index.php?page=server">Server</a></li>';
+			$t .= '<li><a href="index.php?page=server">'.$language['topmenu']['server'].'</a></li>';
 		}
 		
 		return $t;

@@ -1,6 +1,6 @@
 <?php
-	include('get_playerinfo.php');
-	$t = getPlayerInfo($getWorld, $getPlayer);
+	include('get_serverinfo.php');
+	$t = getServerInfo($getWorld);
 
 echo '
 <div class="ym-gbox-left ym-clearfix">
@@ -14,22 +14,6 @@ echo '
 						<th>'.$lng['misc']['value'].'</th>
 					</thead>
 					<tbody>
-						<tr>
-							<td>'.$lng['join']['first'].'</td>
-							<td>'.$t['firstjoin'].'</td>
-						</tr>
-						<tr>
-							<td>'.$lng['join']['last'].'</td>
-							<td>'.$t['info']['lastjoin'].'</td>
-						</tr>
-						<tr>
-							<td>'.$lng['join']['leave'].'</td>
-							<td>'.$t['info']['lastleave'].'</td>
-						</tr>
-						<tr>
-							<td>'.$lng['join']['lastplaytime'].'</td>
-							<td>'.intervall(strtotime($t['info']['lastleave']) - strtotime($t['info']['lastjoin'])).'</td>
-						</tr>
 						<tr>
 							<td>'.$lng['join']['playtime'].'</td>
 							<td>'.intervall($t['info']['playtime']).'</td>

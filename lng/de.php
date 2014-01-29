@@ -30,8 +30,16 @@ $lng['player']['info'] = 'Um die Informationen eines Spielers sehen zu k&ouml;nn
 $lng['player']['righttitle'] = 'Spieler';
 $lng['player']['rightinfo'] = 'F&uuml;r weitere Informationen entsprechenden Spieler anklicken.';
 
+//Server
+$lng['server']['title'] = 'Server Informationen';
+$lng['server']['righttitle'] = 'Hinweis';
+$lng['server']['rightinfo'] = 'Auf diesem Bildschirm befinden sich die Gesamtstatistiken aller Spieler zusammengerechnet.';
 
 //Playerinfo Page
+$lng['button']['world'] = 'Welt';
+$lng['button']['nether'] = 'Nether';
+$lng['button']['theend'] = 'Das Ende';
+
 $lng['join']['title'] = 'Spielerzeiten';
 $lng['join']['first'] = 'Erster Login';
 $lng['join']['last'] = 'Letzter Login';
@@ -44,6 +52,7 @@ $lng['move']['foot'] = 'Laufen';
 $lng['move']['boat'] = 'Boot';
 $lng['move']['cart'] = 'Lore';
 $lng['move']['pig'] = 'Schwein';
+$lng['move']['horse'] = 'Pferd';
 
 $lng['general']['title'] = 'Allgemeine Statistiken';
 $lng['general']['arrows'] = 'Pfeile verschossen';
@@ -69,6 +78,12 @@ $lng['general']['worldchange'] = 'Welten gewechselt';
 $lng['general']['itemdrops'] = 'Items verworfen';
 $lng['general']['shear'] = 'Schere genutzt';
 
+//Blockinfo
+$lng['block']['title'] = 'Block Statistiken';
+$lng['block']['icon'] = 'Icon';
+$lng['block']['name'] = 'Name';
+$lng['block']['set'] = 'Gesetzt';
+$lng['block']['break'] = 'Abgebaut';
 
 //Blocks
 $lng['block'][1] = 'Stein';
@@ -89,14 +104,35 @@ $lng['block'][15] = 'Eisenerz';
 $lng['block'][16] = 'Steinkohle';
 $lng['block'][17] = 'Holz';
 $lng['block'][18] = 'Laub';
+$lng['block'][19] = 'Schwamm';
 $lng['block'][20] = 'Glas';
 $lng['block'][21] = 'Lapizlazulierz';
+$lng['block'][22] = 'Lapislazuliblock';
+$lng['block'][23] = 'Werfer';
 $lng['block'][24] = 'Sandstein';
+$lng['block'][25] = 'Notenblock';
 $lng['block'][26] = 'Bett';
+$lng['block'][27] = 'Antriebsschiene';
+$lng['block'][28] = 'Sensorschiene';
+$lng['block'][29] = 'Klebriger Kolben';
+$lng['block'][30] = 'Spinnennetz';
 $lng['block'][31] = 'Gras';
+$lng['block'][32] = 'Toter Strauch';
+$lng['block'][33] = 'Kolben';
+$lng['block'][34] = 'Kolben-Kopf';
 $lng['block'][35] = 'Wolle';
+$lng['block'][36] = 'Verschobener Block';
 $lng['block'][37] = 'Löwenzahn';
 $lng['block'][38] = 'Rose';
+$lng['block'][39] = 'Brauner Pilz';
+$lng['block'][40] = 'Fliegenpilz';
+$lng['block'][41] = 'Goldblock';
+$lng['block'][42] = 'Eisenblock';
+$lng['block'][43] = 'Doppelte Stufe';
+$lng['block'][44] = 'Stufe';
+$lng['block'][45] = 'Ziegelstein';
+$lng['block'][46] = 'TNT';
+$lng['block'][47] = 'Bücherregal';
 $lng['block'][49] = 'Obsidian';
 $lng['block'][50] = 'Fackel';
 $lng['block'][53] = 'Einchenholztreppe';
@@ -118,6 +154,7 @@ $lng['block'][74] = 'Leuchtendes Redstone-Erz';
 $lng['block'][82] = 'Ton';
 $lng['block'][83] = 'Zuckerrohr';
 $lng['block'][85] = 'Zaun';
+$lng['block'][87] = 'Netherstein';
 $lng['block'][88] = 'Seelensand';
 $lng['block'][89] = 'Glowstone';
 $lng['block'][95] = 'Gefärbtes Glas';
@@ -125,10 +162,12 @@ $lng['block'][98] = 'Steinziegel';
 $lng['block'][102] = 'Glasscheibe';
 $lng['block'][103] = 'Melone';
 $lng['block'][105] = 'Melonenpflanze';
+$lng['block'][108] = 'Ziegeltreppe';
 $lng['block'][109] = 'Steinziegeltreppe';
-$lng['block'][111] = 'Netherziegel';
-$lng['block'][112] = 'Netherziegelzaun';
-$lng['block'][113] = 'Netherziegeltreppe';
+$lng['block'][111] = 'Seerose';
+$lng['block'][112] = 'Netherziegel';
+$lng['block'][113] = 'Netherziegelzaun';
+$lng['block'][114] = 'Netherziegeltreppe';
 $lng['block'][115] = 'Netherwarze';
 $lng['block'][118] = 'Kessel';
 $lng['block'][126] = 'Holzstufe';
@@ -137,6 +176,7 @@ $lng['block'][139] = 'Mauer';
 $lng['block'][141] = 'Karottenpflanze';
 $lng['block'][142] = 'Kartoffelpflanze';
 $lng['block'][143] = 'Holzknopf';
+$lng['block'][156] = 'Quartztreppe';
 $lng['block'][161] = 'Laub';
 $lng['block'][162] = 'Holz';
 $lng['block'][171] = 'Teppich';
