@@ -19,5 +19,5 @@ More Informations in wiki pages.
 
 Used Librarys / Genutzte Bibliotheken
 ------------------------------------------
-jpGraph 3.5.0b1 - (jpgraph.net)
-yaml 4.1.2 - (yaml.de)
+jpGraph 3.5.0b1 - (jpgraph.net)<br>
+yaml 4.1.2 - (yaml.de)<br>
