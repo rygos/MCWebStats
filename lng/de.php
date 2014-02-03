@@ -268,5 +268,22 @@ $lng['block'][173] = 'Kohleblock';
 $lng['block'][174] = 'Packeis';
 $lng['block'][175] = 'Hohes Gras';
 
+$lng['mob']['Zombie'] = 'Zombie';
+$lng['mob']['Skeleton'] = 'Skelett';
+$lng['mob']['Slime'] = 'Schleim';
+$lng['mob']['Spider'] = 'Spinne';
+$lng['mob']['Witch'] = 'Hexe';
+$lng['mob']['Creeper'] = 'Creeper';
+$lng['mob']['Bat'] = 'Fledermaus';
+$lng['mob']['Chicken'] = 'Huhn';
+$lng['mob']['Pig_zombie'] = 'Zombie Pigman';
+$lng['mob']['Sheep'] = 'Schaf';
+$lng['mob']['Enderman'] = 'Enderman';
+$lng['mob']['Player'] = 'Spieler';
+$lng['mob']['Squid'] = 'Tintenfisch';
+$lng['mob']['Cow'] = 'Kuh';
+$lng['mob']['Pig'] = 'Schwein';
+$lng['mob']['Snowman'] = 'Schneemann';
+
 $lng['error']['dbcon'] = 'Es konnte keine Verbindung zum Datenbankserver hergestellt werden. Bitte versuche es später nochmal.';
 $lng['error']['dbsel'] = 'Mit Server verbunden. Datenbank konnte nicht ausgewählt werden.';
