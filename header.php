@@ -2,19 +2,19 @@
 
 	function getMenuActive($active, $language) {
 		if($active == 'home' || $active == ''){
-			$t = '<li class="active"><strong>'.$language['topmenu']['overview'].'</strong></li>';
+			$t = '<li class="active"><a href="index.php">'.$language['topmenu']['overview'].'</a></li>';
 		}else{
 			$t = '<li><a href="index.php">'.$language['topmenu']['overview'].'</a></li>';
 		}
 		
 		if($active == 'player'){
-			$t .= '<li class="active"><strong>'.$language['topmenu']['player'].'</strong></li>';
+			$t .= '<li class="active"><a href="index.php?page=player">'.$language['topmenu']['player'].'</a></li>';
 		}else{
 			$t .= '<li><a href="index.php?page=player">'.$language['topmenu']['player'].'</a></li>';
 		}
 		
 		if($active == 'server'){
-			$t .= '<li class="active"><strong>'.$language['topmenu']['server'].'</strong></li>';
+			$t .= '<li class="active"><a href="index.php?page=server">'.$language['topmenu']['server'].'</a></li>';
 		}else{
 			$t .= '<li><a href="index.php?page=server">'.$language['topmenu']['server'].'</a></li>';
 		}
@@ -36,6 +36,15 @@
 		
         <title><?php echo $pg_title; ?></title>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="yaml/add-ons/accessible-tabs/tabs.css" type="text/css"/>
+		<script src="js/jquery-1.7.min.js" type="text/javascript" />
+		<script src="yaml/add-ons/accessible-tabs/jquery.tabs.js" type="text/javascript" />
+		<script src="yaml/add-ons/syncheight/jquery.syncheight.js" type="text/javascript" />
+		<script type="text/javascript">
+			    $(document).ready(function(){
+    				$('.jquery_tabs').accessibleTabs();
+    			});
+		</script>
 		
 		<!--[if lte IE 7]>
 		<link rel="stylesheet" href="yaml/core/iehacks.min.css" type="text/css"/>

@@ -16,6 +16,12 @@
 	}else{
 		$getWorld = '';
 	}
+	
+	if(isset($_GET['score'])) {
+		$getScore = $_GET['score'];
+	}else{
+		$getScore = '';
+	}
 
 	include 'config.php';
 	
@@ -35,6 +41,8 @@
 		include 'player.php';
 	}elseif($getPage == 'server'){
 		include 'server.php';
+	}elseif($getPage == 'changelog'){
+		include 'changelog.php';
 	}else{
 		include 'home.php';
 	}

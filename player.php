@@ -7,7 +7,7 @@
 					
 					<?php
 						if ($getPlayer == '') {
-							echo '<div class="ym-gbox-left ym-clearfix"><p>' . $lng['player']['info'] . '</p></div>';
+							include 'player_highscore.php';
 						} else {
 							if ($getWorld == '') {
 								$getWorld = $mc_world;
@@ -28,7 +28,7 @@
 					<div class="ym-gbox-right ym-clearfix">
 						<h3><?php echo $lng['player']['righttitle']; ?></h3>
 						<?php
-						$sql = "SELECT name FROM stats_players";
+						$sql = "SELECT name FROM stats_players ORDER BY name";
 						$result = mysql_query($sql);
 						// or die("header.php Anfrage...");
 

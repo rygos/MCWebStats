@@ -11,9 +11,12 @@
 
 	$theme_class= new UniversalTheme;
 	$graph->SetTheme($theme_class);
+	$graph->img->SetAntiAliasing(false);
 
 	// Set A title for the plot
 	//$graph->title->Set("A Simple 3D Pie Plot");
+	
+	$graph->SetMarginColor('#F4F4F4');
 
 	// Create
 	$p1 = new PiePlot3D($data);

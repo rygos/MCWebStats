@@ -39,8 +39,8 @@ class UniversalTheme extends Theme
         $height = $img->height;
         $graph->SetMargin($img->left_margin, $img->right_margin, $img->top_margin, $height * 0.25);
         */
-        $graph->SetFrame(false);
-        $graph->SetMarginColor('white');
+        $graph->SetFrame(true);
+        $graph->SetMarginColor('black');
         $graph->SetBox(true, '#DADADA');
 //        $graph->SetBackgroundGradient($this->background_color, '#FFFFFF', GRAD_HOR, BGRAD_PLOT);
 

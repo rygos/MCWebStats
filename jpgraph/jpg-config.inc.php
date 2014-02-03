@@ -61,7 +61,7 @@ define('CSIMCACHE_HTTP_DIR','csimcache/');
 
 // Deafult locale for error messages.
 // This defaults to English = 'en'
-define('DEFAULT_ERR_LOCALE','en');
+define('DEFAULT_ERR_LOCALE','de');
 
 // Deafult graphic format set to 'auto' which will automatically
 // choose the best available format in the order png,gif,jpeg
@@ -130,7 +130,7 @@ define('CACHE_FILE_GROUP','www');
 define('CACHE_FILE_MOD',0664);
 
 // Default theme class name
-define('DEFAULT_THEME_CLASS', 'UniversalTheme');
+define('DEFAULT_THEME_CLASS', 'VividTheme');
 
 define('SUPERSAMPLING', true);
 define('SUPERSAMPLING_SCALE', 1);

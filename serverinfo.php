@@ -189,7 +189,7 @@ echo '
 		</thead>
 		<tbody>';
 			
-				for ($i = 1; $i <= 256; $i++) {
+				for ($i = 1; $i <= 255; $i++) {
 					$break = false;
 					$set = false;
 					$breakcount=0;
@@ -214,6 +214,25 @@ echo '
 						
 					}
 					
+				}
+
+			echo '
+		</tbody>
+	</table>
+	<h4>'.$lng['kill']['title'].'</h4>
+	<table>
+		<thead>
+			<th>'.$lng['kill']['icon'].'</th>
+			<th>'.$lng['kill']['name'].'</th>
+			<th>'.$lng['kill']['amount'].'</th>
+		</thead>
+		<tbody>';
+				foreach ($t['kill'] as $kill) {
+				echo '<tr>
+						<td><img src="assets/entities/'.$kill['name'].'.png" width="32"></td>
+						<td>'.$lng['mob'][$kill['name']].'</td>
+						<td>'.$kill['amount'].'</td>
+					</tr>';
 				}
 
 			echo '

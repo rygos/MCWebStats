@@ -38,7 +38,7 @@ function getServerInfo($worldname) {
 		}
 		if ($row['type'] == 3) {$pinfo['move']['pig'] = $row['dist'];
 		}
-		if ($row['type'] == 3) {$pinfo['move']['horse'] = $row['dist'];
+		if ($row['type'] == 5) {$pinfo['move']['horse'] = $row['dist'];
 		}
 	}
 
@@ -103,14 +103,15 @@ function getServerInfo($worldname) {
 	}
 
 	//Block Informationen
-	$sql = "SELECT *, sum(amount) FROM stats_block WHERE world = '" . $worldname . "' GROUP BY blockID";
+	$sql = "SELECT *, sum(amount) FROM stats_block WHERE world = '" . $worldname . "' AND break = 1 GROUP BY blockID";
 	$result = mysql_query($sql);
 	while ($row = mysql_fetch_array($result)) {
-		if ($row['break'] == 1) {
-			$pinfo['block']['break'][$row['blockID']] = $row['sum(amount)'];
-		} elseif ($row['break'] == 0) {
-			$pinfo['block']['set'][$row['blockID']] = $row['sum(amount)'];
-		}
+		$pinfo['block']['break'][$row['blockID']] = $row['sum(amount)'];
+	}
+	$sql = "SELECT *, sum(amount) FROM stats_block WHERE world = '" . $worldname . "' AND break = 0 GROUP BY blockID";
+	$result = mysql_query($sql);
+	while ($row = mysql_fetch_array($result)) {
+		$pinfo['block']['set'][$row['blockID']] = $row['sum(amount)'];
 	}
 
 	//Kill Informationen

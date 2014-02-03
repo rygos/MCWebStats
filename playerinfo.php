@@ -4,6 +4,9 @@
 
 echo '
 <div class="ym-gbox-left ym-clearfix">
+	<div class="jquery_tabs">
+	<h4>Allgemeine Statistiken</h4>
+	<p class="tabbody">
 	<div class="ym-grid linearize-level-2">
 		<div class="ym-g50 ym-gl">
 			<div class="ym-gbox-left">
@@ -194,6 +197,9 @@ echo '
 			</div>
 		</div>
 	</div>
+	</p>
+	<h4>Block Statstiken</h4>
+	<p class="tabbody">
 	<h6>'.$lng['block']['title'].'</h6>
 	<p class="box info">Beta, Beta =)<p>
 	<table>
@@ -235,5 +241,25 @@ echo '
 			echo '
 		</tbody>
 	</table>
+	<h4>'.$lng['kill']['title'].'</h4>
+	<table>
+		<thead>
+			<th>'.$lng['kill']['icon'].'</th>
+			<th>'.$lng['kill']['name'].'</th>
+			<th>'.$lng['kill']['amount'].'</th>
+		</thead>
+		<tbody>';
+				foreach ($t['kill'] as $kill) {
+				echo '<tr>
+						<td><img src="assets/entities/'.$kill['name'].'.png" width="32"></td>
+						<td>'.$lng['mob'][$kill['name']].'</td>
+						<td>'.$kill['amount'].'</td>
+					</tr>';
+				}
+
+			echo '
+		</tbody>
+	</table>
+	</div>
 </div>
 ';
