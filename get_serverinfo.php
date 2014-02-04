@@ -12,9 +12,9 @@
  */
 
 //Lade Spielerinformationen in Array
-function getServerInfo($worldname) {
+function getServerInfo($worldname, $dbh, $sql) {
 	//Fehlerreporting ausschalten
-	error_reporting(0);
+	//error_reporting(0);
 	
 	//Instanzieren des SpielerArrays
 	$pinfo = array();
@@ -26,55 +26,24 @@ function getServerInfo($worldname) {
 	$pinfo['move']['pig'] = 0;
 	$pinfo['move']['horse'] = 0;
 
-	$sql = "SELECT *, sum(stats_move.distance) AS dist FROM stats_move WHERE world = '".$worldname."' GROUP BY type ASC";
-
-	$result = mysql_query($sql);
-	while ($row = mysql_fetch_array($result)) {
-		if ($row['type'] == 0) {$pinfo['move']['foot'] = $row['dist'];
-		}
-		if ($row['type'] == 1) {$pinfo['move']['boat'] = $row['dist'];
-		}
-		if ($row['type'] == 2) {$pinfo['move']['cart'] = $row['dist'];
-		}
-		if ($row['type'] == 3) {$pinfo['move']['pig'] = $row['dist'];
-		}
-		if ($row['type'] == 5) {$pinfo['move']['horse'] = $row['dist'];
-		}
+	$stmt = $dbh->prepare($sql['srv_move']);
+	$stmt->bindParam(1,$worldname);
+	$stmt->execute();
+	$pinfo['id'] = 0;
+	while ($row = $stmt->fetch()) {
+		if ($row['type'] == 0) {$pinfo['move']['foot'] = $row['dist'];}
+		if ($row['type'] == 1) {$pinfo['move']['boat'] = $row['dist'];}
+		if ($row['type'] == 2) {$pinfo['move']['cart'] = $row['dist'];}
+		if ($row['type'] == 3) {$pinfo['move']['pig'] = $row['dist'];}
+		if ($row['type'] == 5) {$pinfo['move']['horse'] = $row['dist'];}
 	}
 
 	//Globale Spielerinformationen
-	$sql = "SELECT
-				sum(playtime),
-				sum(arrows),
-				sum(xpgained),
-				sum(joins),
-				sum(fishcatched),
-				sum(damagetaken),
-				sum(timeskicked),
-				sum(toolsbroken),
-				sum(eggsthrown),
-				sum(itemscrafted),
-				sum(omnomnom),
-				sum(onfire),
-				sum(wordssaid),
-				sum(commandsdone),
-				sum(votes),
-				sum(teleports),
-				sum(itempickups),
-				sum(bedenter),
-				sum(bucketfill),
-				sum(bucketempty),
-				sum(worldchange),
-				sum(itemdrops),
-				sum(shear)
-			FROM
-				stats_player
-			WHERE
-				world = '".$worldname."'
-			GROUP BY
-				world";
-	$result = mysql_query($sql);
-	while ($row = mysql_fetch_array($result)) {
+	$stmt = $dbh->prepare($sql['srv_glob']);
+	$stmt->bindParam(1,$worldname);
+	$stmt->execute();
+	$pinfo['id'] = 0;
+	while ($row = $stmt->fetch()) {
 		$pinfo['info']['playtime'] = $row['sum(playtime)'];
 		$pinfo['info']['arrows'] = $row['sum(arrows)'];
 		$pinfo['info']['xpgained'] = $row['sum(xpgained)'];
@@ -103,21 +72,28 @@ function getServerInfo($worldname) {
 	}
 
 	//Block Informationen
-	$sql = "SELECT *, sum(amount) FROM stats_block WHERE world = '" . $worldname . "' AND break = 1 GROUP BY blockID";
-	$result = mysql_query($sql);
-	while ($row = mysql_fetch_array($result)) {
+	$stmt = $dbh->prepare($sql['srv_block']);
+	$stmt->bindParam(1,$worldname);
+	$brtype = 1;
+	$stmt->bindParam(2, $brtype);
+	$stmt->execute();
+	$pinfo['id'] = 0;
+	while ($row = $stmt->fetch()) {
 		$pinfo['block']['break'][$row['blockID']] = $row['sum(amount)'];
 	}
-	$sql = "SELECT *, sum(amount) FROM stats_block WHERE world = '" . $worldname . "' AND break = 0 GROUP BY blockID";
-	$result = mysql_query($sql);
-	while ($row = mysql_fetch_array($result)) {
+	$brtype = 0;
+	$stmt->execute();
+	$pinfo['id'] = 0;
+	while ($row = $stmt->fetch()) {
 		$pinfo['block']['set'][$row['blockID']] = $row['sum(amount)'];
 	}
 
 	//Kill Informationen
-	$sql = "SELECT *, sum(amount) FROM stats_kill WHERE  world = '" . $worldname . "' GROUP BY type";
-	$result = mysql_query($sql);
-	while ($row = mysql_fetch_array($result)) {
+	$stmt = $dbh->prepare($sql['srv_kill']);
+	$stmt->bindParam(1,$worldname);
+	$stmt->execute();
+	$pinfo['id'] = 0;
+	while ($row = $stmt->fetch()) {
 		$pinfo['kill'][$row['type']]['amount'] = $row['sum(amount)'];
 		$pinfo['kill'][$row['type']]['name'] = $row['type'];
 	}

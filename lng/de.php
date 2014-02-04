@@ -15,7 +15,7 @@ $lng['misc']['minutes'] = 'Minuten';
 //Topmenu
 $lng['topmenu']['overview'] 	= '&Uuml;bersicht';
 $lng['topmenu']['player']		= 'Spieler';
-$lng['topmenu']['server']		= 'Server';
+$lng['topmenu']['server']		= 'Server';																																		
 $lng['topmenu']['changelog'] = 'Changelog';
 
 //Overview Page
@@ -287,3 +287,4 @@ $lng['mob']['Snowman'] = 'Schneemann';
 
 $lng['error']['dbcon'] = 'Es konnte keine Verbindung zum Datenbankserver hergestellt werden. Bitte versuche es später nochmal.';
 $lng['error']['dbsel'] = 'Mit Server verbunden. Datenbank konnte nicht ausgewählt werden.';
+$lng['error']['playerNA'] = 'Es existieren noch keine Daten für diesen Spieler.';

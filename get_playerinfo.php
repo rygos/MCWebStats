@@ -12,21 +12,27 @@
  */
 
 //Lade Spielerinformationen in Array
-function getPlayerInfo($worldname, $playername) {
+function getPlayerInfo($worldname, $playername, $dbh, $sql) {
 	//Fehlerreporting ausschalten
-	error_reporting(0);
+	//error_reporting(0);
 	
 	//Instanzieren des SpielerArrays
 	$pinfo = array();
 
 	//PlayerID Laden
-	$sql = "SELECT * FROM stats_players WHERE name = '" . $playername . "'";
-	$result = mysql_query($sql);
+	$stmt = $dbh->prepare($sql['pi_playertbl']);
+	$stmt->bindParam(1,$playername);
+	$stmt->execute();
 	$pinfo['id'] = 0;
-	while ($row = mysql_fetch_array($result)) {
+	while ($row = $stmt->fetch()) {
 		$pinfo['id'] = $row['player_id'];
 		$pinfo['name'] = $row['name'];
 		$pinfo['firstjoin'] = $row['firstjoin'];
+	}
+	
+	if(!isset($pinfo['name'])){
+		$pinfo['name'] = '=?unk?=';
+		return $pinfo;
 	}
 
 	//Bewegungsinformationen:
@@ -36,13 +42,11 @@ function getPlayerInfo($worldname, $playername) {
 	$pinfo['move']['pig'] = 0;
 	$pinfo['move']['horse'] = 0;
 
-	if ($worldname == 'all') {
-		$sql = "SELECT * FROM stats_move WHERE player_id = " . $pinfo['id'] . " AND world = '" . $worldname . "' ORDER BY type ASC";
-	} else {
-		$sql = "SELECT * FROM stats_move WHERE player_id = " . $pinfo['id'] . " AND world = '" . $worldname . "' ORDER BY type ASC";
-	}
-	$result = mysql_query($sql);
-	while ($row = mysql_fetch_array($result)) {
+	$stmt = $dbh->prepare($sql['pi_move']);
+	$stmt->bindParam(1, $pinfo['id']);
+	$stmt->bindParam(2, $worldname);
+	$stmt->execute();
+	while ($row = $stmt->fetch()) {
 		if ($row['type'] == 0) {$pinfo['move']['foot'] = $row['distance'];
 		}
 		if ($row['type'] == 1) {$pinfo['move']['boat'] = $row['distance'];
@@ -56,9 +60,11 @@ function getPlayerInfo($worldname, $playername) {
 	}
 
 	//Globale Spielerinformationen
-	$sql = "SELECT * FROM stats_player WHERE player_id = " . $pinfo['id'] . " AND world = '" . $worldname . "'";
-	$result = mysql_query($sql);
-	while ($row = mysql_fetch_array($result)) {
+	$stmt = $dbh->prepare($sql['pi_glob']);
+	$stmt->bindParam(1, $pinfo['id']);
+	$stmt->bindParam(2, $worldname);
+	$stmt->execute();
+	while ($row = $stmt->fetch()) {
 		$pinfo['info']['playtime'] = $row['playtime'];
 		$pinfo['info']['arrows'] = $row['arrows'];
 		$pinfo['info']['xpgained'] = $row['xpgained'];
@@ -87,9 +93,11 @@ function getPlayerInfo($worldname, $playername) {
 	}
 
 	//Block Informationen
-	$sql = "SELECT * FROM stats_block WHERE player_id = " . $pinfo['id'] . " AND world = '" . $worldname . "'";
-	$result = mysql_query($sql);
-	while ($row = mysql_fetch_array($result)) {
+	$stmt = $dbh->prepare($sql['pi_block']);
+	$stmt->bindParam(1, $pinfo['id']);
+	$stmt->bindParam(2, $worldname);
+	$stmt->execute();
+	while ($row = $stmt->fetch()) {
 		if ($row['break'] == 1) {
 			$pinfo['block']['break'][$row['blockID']] = $row['amount'];
 		} elseif ($row['break'] == 0) {
@@ -98,9 +106,11 @@ function getPlayerInfo($worldname, $playername) {
 	}
 
 	//Kill Informationen
-	$sql = "SELECT * FROM stats_kill WHERE player_id = " . $pinfo['id'] . " AND world = '" . $worldname . "'";
-	$result = mysql_query($sql);
-	while ($row = mysql_fetch_array($result)) {
+	$stmt = $dbh->prepare($sql['pi_kill']);
+	$stmt->bindParam(1, $pinfo['id']);
+	$stmt->bindParam(2, $worldname);
+	$stmt->execute();
+	while ($row = $stmt->fetch()) {
 		$pinfo['kill'][$row['type']]['amount'] = $row['amount'];
 		$pinfo['kill'][$row['type']]['name'] = $row['type'];
 	}

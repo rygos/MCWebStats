@@ -1,6 +1,6 @@
 <?php
 	include('get_serverinfo.php');
-	$t = getServerInfo($getWorld);
+	$t = getServerInfo($getWorld, $dbh, $sql);
 
 echo '
 <div class="ym-gbox-left ym-clearfix">

@@ -30,6 +30,7 @@
 	
 	include 'functions.php';
 	include 'db.php';
+	include 'db_querys.php';
 	
 	include 'get_playerinfo.php';
 	
