@@ -16,7 +16,8 @@ $lng['misc']['minutes'] = 'Minuten';
 $lng['topmenu']['overview'] 	= '&Uuml;bersicht';
 $lng['topmenu']['player']		= 'Spieler';
 $lng['topmenu']['server']		= 'Server';																																		
-$lng['topmenu']['changelog'] = 'Changelog';
+$lng['topmenu']['changelog']    = 'Changelog';
+$lng['topmenu']['map']			='Karte';
 
 //Overview Page
 $lng['home']['t5play'] = 'Top 5 - Spielzeit';

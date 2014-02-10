@@ -15,22 +15,22 @@
 function getPlayerInfo($worldname, $playername, $dbh, $sql) {
 	//Fehlerreporting ausschalten
 	//error_reporting(0);
-	
+
 	//Instanzieren des SpielerArrays
 	$pinfo = array();
 
 	//PlayerID Laden
-	$stmt = $dbh->prepare($sql['pi_playertbl']);
-	$stmt->bindParam(1,$playername);
-	$stmt->execute();
+	$stmt = $dbh -> prepare($sql['pi_playertbl']);
+	$stmt -> bindParam(1, $playername);
+	$stmt -> execute();
 	$pinfo['id'] = 0;
-	while ($row = $stmt->fetch()) {
+	while ($row = $stmt -> fetch()) {
 		$pinfo['id'] = $row['player_id'];
 		$pinfo['name'] = $row['name'];
 		$pinfo['firstjoin'] = $row['firstjoin'];
 	}
-	
-	if(!isset($pinfo['name'])){
+
+	if (!isset($pinfo['name'])) {
 		$pinfo['name'] = '=?unk?=';
 		return $pinfo;
 	}
@@ -42,11 +42,11 @@ function getPlayerInfo($worldname, $playername, $dbh, $sql) {
 	$pinfo['move']['pig'] = 0;
 	$pinfo['move']['horse'] = 0;
 
-	$stmt = $dbh->prepare($sql['pi_move']);
-	$stmt->bindParam(1, $pinfo['id']);
-	$stmt->bindParam(2, $worldname);
-	$stmt->execute();
-	while ($row = $stmt->fetch()) {
+	$stmt = $dbh -> prepare($sql['pi_move']);
+	$stmt -> bindParam(1, $pinfo['id']);
+	$stmt -> bindParam(2, $worldname);
+	$stmt -> execute();
+	while ($row = $stmt -> fetch()) {
 		if ($row['type'] == 0) {$pinfo['move']['foot'] = $row['distance'];
 		}
 		if ($row['type'] == 1) {$pinfo['move']['boat'] = $row['distance'];
@@ -60,11 +60,11 @@ function getPlayerInfo($worldname, $playername, $dbh, $sql) {
 	}
 
 	//Globale Spielerinformationen
-	$stmt = $dbh->prepare($sql['pi_glob']);
-	$stmt->bindParam(1, $pinfo['id']);
-	$stmt->bindParam(2, $worldname);
-	$stmt->execute();
-	while ($row = $stmt->fetch()) {
+	$stmt = $dbh -> prepare($sql['pi_glob']);
+	$stmt -> bindParam(1, $pinfo['id']);
+	$stmt -> bindParam(2, $worldname);
+	$stmt -> execute();
+	while ($row = $stmt -> fetch()) {
 		$pinfo['info']['playtime'] = $row['playtime'];
 		$pinfo['info']['arrows'] = $row['arrows'];
 		$pinfo['info']['xpgained'] = $row['xpgained'];
@@ -93,11 +93,11 @@ function getPlayerInfo($worldname, $playername, $dbh, $sql) {
 	}
 
 	//Block Informationen
-	$stmt = $dbh->prepare($sql['pi_block']);
-	$stmt->bindParam(1, $pinfo['id']);
-	$stmt->bindParam(2, $worldname);
-	$stmt->execute();
-	while ($row = $stmt->fetch()) {
+	$stmt = $dbh -> prepare($sql['pi_block']);
+	$stmt -> bindParam(1, $pinfo['id']);
+	$stmt -> bindParam(2, $worldname);
+	$stmt -> execute();
+	while ($row = $stmt -> fetch()) {
 		if ($row['break'] == 1) {
 			$pinfo['block']['break'][$row['blockID']] = $row['amount'];
 		} elseif ($row['break'] == 0) {
@@ -106,11 +106,11 @@ function getPlayerInfo($worldname, $playername, $dbh, $sql) {
 	}
 
 	//Kill Informationen
-	$stmt = $dbh->prepare($sql['pi_kill']);
-	$stmt->bindParam(1, $pinfo['id']);
-	$stmt->bindParam(2, $worldname);
-	$stmt->execute();
-	while ($row = $stmt->fetch()) {
+	$stmt = $dbh -> prepare($sql['pi_kill']);
+	$stmt -> bindParam(1, $pinfo['id']);
+	$stmt -> bindParam(2, $worldname);
+	$stmt -> execute();
+	while ($row = $stmt -> fetch()) {
 		$pinfo['kill'][$row['type']]['amount'] = $row['amount'];
 		$pinfo['kill'][$row['type']]['name'] = $row['type'];
 	}

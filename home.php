@@ -15,7 +15,7 @@
 										$i = 0;
 										if ($stmt->execute()) {
 										  while ($row = $stmt->fetch()) {
-										    echo intervall($row['playtime']).' - <a href="index.php?page=player&player='.$row['name'].'">'.$row['name'].'</a><br>';
+										    echo intervall($row['playtime']).' - <a href="index.php?page=player&player='.$row['name'].'">'.$row['name'].''.getPlayerState($row['name'],$sql,$dbh).'</a><br>';
 											$data[$i] = $row['playtime'];
 											$datalabel[$i] = $row['name'];
 											$i = $i + 1;
@@ -39,7 +39,7 @@
 										if ($stmt->execute()){
 										while($row = $stmt->fetch())
 											{
-												echo intval($row['distance']).' Meter - <a href="index.php?page=player&player='.$row['name'].'">'.$row['name'].'</a><br>';
+												echo intval($row['distance']).' Meter - <a href="index.php?page=player&player='.$row['name'].'">'.$row['name'].''.getPlayerState($row['name'],$sql,$dbh).'</a><br>';
 												$data[$i] = $row['distance'];
 												$datalabel[$i] = $row['name'];
 												$i = $i + 1;
@@ -64,7 +64,7 @@
 								$i = 0;
 								if ($stmt->execute()) {
 									while ($row = $stmt->fetch()) {
-										echo intval($row['killcount']).' Kills - <a href="index.php?page=player&player='.$row['name'].'">'.$row['name'].'</a><br>';
+										echo intval($row['killcount']).' Kills - <a href="index.php?page=player&player='.$row['name'].'">'.$row['name'].''.getPlayerState($row['name'],$sql,$dbh).'</a><br>';
 										$data[$i] = $row['killcount'];
 										$datalabel[$i] = $row['name'];
 										$i = $i + 1;
@@ -94,7 +94,7 @@
 										$i = 0;
 										if ($stmt->execute()) {
 											while ($row = $stmt->fetch()) {
-												echo $row['omnomnom'].' - <a href="index.php?page=player&player='.$row['name'].'">'.$row['name'].'</a><br>';
+												echo $row['omnomnom'].' - <a href="index.php?page=player&player='.$row['name'].'">'.$row['name'].''.getPlayerState($row['name'],$sql,$dbh).'</a><br>';
 												$data[$i] = $row['omnomnom'];
 												$datalabel[$i] = $row['name'];
 												$i = $i + 1;
@@ -117,7 +117,7 @@
 										$i = 0;
 										if ($stmt->execute()) {
 											while ($row = $stmt->fetch()) {
-												echo intval($row['blockcount']).' Blöcke - <a href="index.php?page=player&player='.$row['name'].'">'.$row['name'].'</a><br>';
+												echo intval($row['blockcount']).' Blöcke - <a href="index.php?page=player&player='.$row['name'].'">'.$row['name'].''.getPlayerState($row['name'],$sql,$dbh).'</a><br>';
 												$data[$i] = $row['blockcount'];
 												$datalabel[$i] = $row['name'];
 												$i = $i + 1;
@@ -142,7 +142,7 @@
 								$i = 0;
 								if ($stmt->execute()) {
 									while ($row = $stmt->fetch()) {
-										echo intval($row['blockcount']).' Blöcke - <a href="index.php?page=player&player='.$row['name'].'">'.$row['name'].'</a><br>';
+										echo intval($row['blockcount']).' Blöcke - <a href="index.php?page=player&player='.$row['name'].'">'.$row['name'].''.getPlayerState($row['name'],$sql,$dbh).'</a><br>';
 										$data[$i] = $row['blockcount'];
 										$datalabel[$i] = $row['name'];
 										$i = $i + 1;

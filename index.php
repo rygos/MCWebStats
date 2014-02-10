@@ -28,9 +28,9 @@
 	//hier kommt irgendwann die mehrsprachigkeit... xD
 	Include 'lng/de.php';
 	
-	include 'functions.php';
 	include 'db.php';
 	include 'db_querys.php';
+	include 'functions.php';
 	
 	include 'get_playerinfo.php';
 	
@@ -44,6 +44,8 @@
 		include 'server.php';
 	}elseif($getPage == 'changelog'){
 		include 'changelog.php';
+	}elseif($getPage == 'map'){
+		include 'map.php';
 	}else{
 		include 'home.php';
 	}

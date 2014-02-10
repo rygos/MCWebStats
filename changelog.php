@@ -4,7 +4,11 @@
 			<section class="ym-grid linearize-level-1">
 				<article class="ym-gbox ym-gl content">
 					<h2><?php echo $lng['topmenu']['changelog']; ?></h2>
-					
+						<h5>R140210</h5>
+						add: Show Online/Offline Icon on Home Page for Players<br>
+						add: Some comments to config.php
+						<br><br><br>
+						
 						<h5>R140204</h5>
 						chg: pdo-Stored Prozedures<br>
 						fix: Missing Entity language Strings<br>

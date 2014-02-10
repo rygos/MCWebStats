@@ -1,6 +1,6 @@
 <?php
 
-	function getMenuActive($active, $language) {
+	function getMenuActive($active, $language, $dm_path) {
 		if($active == 'home' || $active == ''){
 			$t = '<li class="active"><a href="index.php">'.$language['topmenu']['overview'].'</a></li>';
 		}else{
@@ -17,6 +17,14 @@
 			$t .= '<li class="active"><a href="index.php?page=server">'.$language['topmenu']['server'].'</a></li>';
 		}else{
 			$t .= '<li><a href="index.php?page=server">'.$language['topmenu']['server'].'</a></li>';
+		}
+		
+		if(!$dm_path == ''){
+			if($active == 'map'){
+				$t .= '<li class="active"><a href="index.php?page=map">'.$language['topmenu']['map'].'</a></li>';
+			}else{
+				$t .= '<li><a href="index.php?page=map">'.$language['topmenu']['map'].'</a></li>';
+			}
 		}
 		
 		return $t;
@@ -63,7 +71,7 @@
 			<div class="ym-wrapper">
 				<div class="ym-wbox">
 					<ul>
-						<?php echo getMenuActive($getPage, $lng); ?>
+						<?php echo getMenuActive($getPage, $lng, $dm_path); ?>
 					</ul>
 				</div>
 			</div>

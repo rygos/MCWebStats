@@ -46,3 +46,6 @@ $sql['srv_move'] = "SELECT *, sum(stats_move.distance) AS dist FROM stats_move W
 $sql['srv_glob'] = "SELECT sum(playtime), sum(arrows), sum(xpgained), sum(joins), sum(fishcatched), sum(damagetaken), sum(timeskicked), sum(toolsbroken), sum(eggsthrown), sum(itemscrafted), sum(omnomnom), sum(onfire), sum(wordssaid), sum(commandsdone), sum(votes), sum(teleports), sum(itempickups), sum(bedenter), sum(bucketfill), sum(bucketempty), sum(worldchange), sum(itemdrops), sum(shear) FROM stats_player WHERE world = ? GROUP BY world";
 $sql['srv_block'] = "SELECT *, sum(amount) FROM stats_block WHERE world = ? AND break = ? GROUP BY blockID";
 $sql['srv_kill'] = "SELECT *, sum(amount) FROM stats_kill WHERE  world = ? GROUP BY type";
+
+//Player Online
+$sql['player_online'] = "SELECT stats_player.lastjoin, stats_player.lastleave, stats_players.* FROM stats_player INNER JOIN stats_players ON stats_player.player_id = stats_players.player_id WHERE `name`=? GROUP BY stats_player.player_id ORDER BY playtime DESC ";
